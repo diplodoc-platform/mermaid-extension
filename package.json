@@ -1,0 +1,23 @@
+{
+  "name": "@diplodoc/mermaid-plugin",
+  "version": "0.0.1",
+  "description": "Mermaid plugin for Diplodoc transformer and builder",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "mermaid",
+    "markdown-it"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mermaid": "^10.0.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.17.12",
+    "jest": "^29.5.0",
+    "markdown-it": "^13.0.1"
+  }
+}
