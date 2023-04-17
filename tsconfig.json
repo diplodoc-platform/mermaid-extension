@@ -14,8 +14,12 @@
     "noFallthroughCasesInSwitch": true,
     "noEmitOnError": true,
     "experimentalDecorators": true,
-    "allowJs": true
+    "allowJs": true,
+    "declaration": true
   },
+  "include": [
+    "src"
+  ],
   "ts-node": {
     "esm": true,
     "transpileOnly": true
