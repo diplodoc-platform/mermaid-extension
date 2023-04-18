@@ -4,3 +4,5 @@ plugin
 hooks
 
 index.d.ts
+example/package-lock.json
+example/build
