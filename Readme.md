@@ -3,9 +3,9 @@
 This is extension for Diplodoc platform which adds support for Mermaid diagrams.
 
 Extension contains some parts:
-- [Prepared Mermaid runtime](#runtime)
-- [MarkdownIt transform plugin](#plugin)
-- [React hook for smart control of Mermaid](#hooks)
+- [Prepared Mermaid runtime](#prepared-mermaid-runtime)
+- [MarkdownIt transform plugin](#markdownit-transform-plugin)
+- [React hook for smart control of Mermaid](#react-hook-for-smart-control-of-mermaid)
 
 ## Quickstart
 Attach plugin to transformer
@@ -48,7 +48,7 @@ Add mermaid runtime to your final page
 </html>   
 ```
 
-## Prepared Mermaid runtime {runtime}
+## Prepared Mermaid runtime
 
 The problem with Mermaid is that it has big bundle size.
 The most expected behavior is loading it asynchronously.
@@ -78,7 +78,7 @@ window.mermaidJsonp.push((mermaid) => {
 });
 ```
 
-## MarkdownIt transform plugin {plugin}
+## MarkdownIt transform plugin
 
 Plugin for [@diplodoc/transform](https://github.com/diplodoc-platform/transform) package.
 
@@ -93,7 +93,7 @@ Configuration:
 - `classes` - additional classes which will be added to Mermaid's diagrams.<br>
   Example: `my-own-class and-other-class`<br>
 
-## React hook for smart control of Mermaid {hooks}
+## React hook for smart control of Mermaid
 
 Simplifies Mermaid control with react
 
