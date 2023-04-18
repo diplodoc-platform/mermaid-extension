@@ -32,8 +32,8 @@ async function next(): Promise<void> {
     const callback = queue.shift();
     if (callback) {
         await callback({
-            run: async () => {
-                const nodes = document.querySelectorAll('.mermaid');
+            run: async ({ querySelector = '.mermaid' } = {}) => {
+                const nodes = document.querySelectorAll(querySelector);
 
                 for (const element of Array.from(nodes)) {
                     const id = `mermaid-${ Date.now() }`;

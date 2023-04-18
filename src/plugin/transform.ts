@@ -83,7 +83,7 @@ type InputOptions = MarkdownItPluginOpts & {
 export function transform(options: Partial<PluginOptions> = {}) {
     const { runtime = '_assets/mermaid-extension.js', classes = 'yfm-mermaid', bundle = true } = options;
 
-    const plugin: MarkdownItPluginCb<{ output: string }> = function(md: MarkdownIt, { output }) {
+    const plugin: MarkdownItPluginCb<{ output: string }> = function(md: MarkdownIt, { output = '.' }) {
         registerTransforms(md, {
             classes,
             runtime,
