@@ -1,46 +1,120 @@
-import type {MarkdownIt} from '@doc-tools/transform/lib/typings';
-import type {MarkdownItPluginCb} from '@doc-tools/transform/lib/plugins/typings';
+import { join, dirname } from 'node:path';
+import { mkdirSync, copyFileSync } from 'node:fs';
+import MarkdownIt from 'markdown-it';
+import type { MarkdownItPluginCb, MarkdownItPluginOpts } from '@doc-tools/transform/lib/plugins/typings';
 import type ParserCore from 'markdown-it/lib/parser_core';
+import type Token from 'markdown-it/lib/token';
 
-export function transform({ runtime = '_assets/mermaid-plugin.js', bundle = true } = {}) {
-    const replaceFence: ParserCore.RuleCore = function replaceFence({tokens, env}) {
-        tokens.forEach((token)  => {
-            if (token.type !== 'fence' || !token.info.match(/^\s*mermaid(\s*|$)/)) {
-                return;
-            }
+export type PluginOptions = {
+    runtime: string;
+    classes: string;
+    bundle: boolean;
+}
 
-            token.type = 'mermaid';
-            token.attrSet('class', `mermaid yfm-mermaid`);
+function isMermaidBlock(token: Token) {
+    return token.type === 'fence' && token.info.match(/^\s*mermaid(\s*|$)/);
+}
 
+function hidden<B extends Record<string | symbol, unknown>, F extends string | symbol, V>(
+    box: B,
+    field: F,
+    value: V
+) {
+    if (!(field in box)) {
+        Object.defineProperty(box, field, {
+            enumerable: false,
+            value: value
+        });
+    }
+
+    return box as B & { [P in F]: V };
+}
+
+function copy(from: string, to: string) {
+    mkdirSync(dirname(to), { recursive: true });
+    copyFileSync(from, to);
+}
+
+const registerTransforms = (md: MarkdownIt, {
+    classes, runtime, bundle, output, updateTokens
+}: PluginOptions & {
+    output: string,
+    updateTokens: boolean
+}) => {
+    const applyTransforms: ParserCore.RuleCore = ({ tokens, env }) => {
+        hidden(env, 'bundled', new Set<string>());
+
+        const blocks = tokens.filter(isMermaidBlock);
+
+        if (updateTokens && blocks.length) {
+            blocks.forEach((token) => {
+                token.type = 'mermaid';
+                token.attrSet('class', `mermaid ${ classes }`);
+            });
+        }
+
+        if (blocks.length) {
             env.meta = env.meta || {};
             env.meta.script = env.meta.script || [];
+            env.meta.script.push(runtime);
 
-            if (env.meta.script.indexOf(runtime) === -1) {
-                env.meta.script.push(runtime);
+            if (bundle) {
+                const file = join(PACKAGE, 'runtime');
+                if (!env.bundled.has(file)) {
+                    env.bundled.add(file);
 
-                if (bundle) {
-                    env.meta.bundle = env.meta.bundle || [];
-                    env.meta.bundle.push({
-                        from: '@diplodoc/mermaid-plugin/dist/runtime.js',
-                        to: runtime
-                    });
+                    copy(require.resolve(file), join(output, runtime));
                 }
             }
-        });
-    };
-
-    return function(md: MarkdownIt) {
-        try {
-            md.core.ruler.after('fence', 'mermaid', replaceFence);
-        } catch (e) {
-            md.core.ruler.push('mermaid', replaceFence);
         }
+    }
+
+    try {
+        md.core.ruler.after('fence', 'mermaid', applyTransforms);
+    } catch (e) {
+        md.core.ruler.push('mermaid', applyTransforms);
+    }
+}
+
+type InputOptions = MarkdownItPluginOpts & {
+    destRoot: string;
+};
+
+export function transform(options: Partial<PluginOptions> = {}) {
+    const { runtime = '_assets/mermaid-extension.js', classes = 'yfm-mermaid', bundle = true } = options;
+
+    const plugin: MarkdownItPluginCb<{ output: string }> = function(md: MarkdownIt, { output }) {
+        registerTransforms(md, {
+            classes,
+            runtime,
+            bundle,
+            output,
+            updateTokens: true
+        });
 
         md.renderer.rules.mermaid = (tokens, idx) => {
             const token = tokens[idx];
             const code = encodeURIComponent(token.content.trim());
 
-            return `<div class="mermaid" data-content="${code}"></div>`;
+            return `<div class="mermaid" data-content="${ code }"></div>`;
         };
-    } as MarkdownItPluginCb;
+    };
+
+    Object.assign(plugin, {
+        collect(input: string, { destRoot }: InputOptions) {
+            const md = new MarkdownIt().use((md) => {
+                registerTransforms(md, {
+                    classes,
+                    runtime,
+                    bundle,
+                    output: destRoot,
+                    updateTokens: false
+                });
+            });
+
+            md.parse(input, {});
+        }
+    });
+
+    return plugin;
 }

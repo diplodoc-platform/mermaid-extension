@@ -6,6 +6,8 @@ type Callback = (exposed: {
 }) => void;
 
 declare global {
+    declare var PACKAGE: string;
+
     interface Window {
         mermaidJsonp: Callback[];
     }
