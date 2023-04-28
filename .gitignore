@@ -1,7 +1,7 @@
 node_modules
-runtime
-plugin
-hooks
+/runtime
+/plugin
+/hooks
 
 index.d.ts
 example/package-lock.json
