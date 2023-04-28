@@ -1,13 +1,13 @@
 import type { MermaidConfig } from 'mermaid';
 import { useEffect, useState, useCallback } from 'react';
-import { Callback } from '../@types/common';
+import { Callback, RunOptions } from '../@types/common';
 
 export function useMermaid() {
     const [ mermaid, setMermaid ] = useState<Parameters<Callback>[0] | null>(null);
-    const render = useCallback(async (config: MermaidConfig) => {
+    const render = useCallback(async (config: MermaidConfig, options?: RunOptions) => {
         if (mermaid) {
             mermaid.initialize(config);
-            return mermaid.run();
+            return mermaid.run(options);
         }
     }, [ mermaid ]);
 
