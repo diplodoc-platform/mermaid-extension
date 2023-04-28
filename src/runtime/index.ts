@@ -32,10 +32,10 @@ async function next(): Promise<void> {
     const callback = queue.shift();
     if (callback) {
         await callback({
-            run: async ({ querySelector = '.mermaid' } = {}) => {
-                const nodes = document.querySelectorAll(querySelector);
+            run: async ({ querySelector = '.mermaid', nodes } = {}) => {
+                const nodesList = nodes || document.querySelectorAll(querySelector);
 
-                for (const element of Array.from(nodes)) {
+                for (const element of Array.from(nodesList)) {
                     const id = `mermaid-${ Date.now() }`;
                     const content = element.getAttribute('data-content') || '';
                     const text = dedent(decodeURIComponent(content))

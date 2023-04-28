@@ -1,7 +1,9 @@
-import type mermaid from 'mermaid';
+import type mermaid, {RunOptions as MermaidRunOptions} from 'mermaid';
+
+type RunOptions = Pick<MermaidRunOptions, 'querySelector' | 'nodes'>;
 
 type Callback = (exposed: {
-    run: typeof mermaid.run;
+    run: (options?: RunOptions) => Promise<void>;
     initialize: typeof mermaid.initialize;
 }) => void;
 
