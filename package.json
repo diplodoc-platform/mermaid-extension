@@ -1,6 +1,6 @@
 {
   "name": "@diplodoc/mermaid-extension",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Mermaid plugin for Diplodoc transformer and builder",
   "main": "plugin/index.js",
   "types": "plugin/index.d.ts",
