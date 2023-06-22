@@ -5,7 +5,6 @@ import { readFile } from 'node:fs/promises'
 (async () => {
     const content = await readFile('./Readme.md', 'utf8');
     const {result} = await transform(content, {
-        output: './build',
         plugins: [
             mermaid.transform()
         ]
