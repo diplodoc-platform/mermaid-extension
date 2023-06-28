@@ -1,5 +1,3 @@
-import { join, dirname } from 'node:path';
-import { mkdirSync, copyFileSync } from 'node:fs';
 import MarkdownIt from 'markdown-it';
 import type { MarkdownItPluginCb, MarkdownItPluginOpts } from '@doc-tools/transform/lib/plugins/typings';
 import type ParserCore from 'markdown-it/lib/parser_core';
@@ -31,6 +29,14 @@ function hidden<B extends Record<string | symbol, unknown>, F extends string | s
 }
 
 function copy(from: string, to: string) {
+    let mkdirSync, copyFileSync, dirname
+    try {
+        const fs = require('node:fs')
+        mkdirSync = fs.mkdirSync;
+        copyFileSync = fs.copyFileSync
+        dirname = require('node:path').dirname;
+    } catch(_e) {}
+
     mkdirSync(dirname(to), { recursive: true });
     copyFileSync(from, to);
 }
@@ -59,6 +65,11 @@ const registerTransforms = (md: MarkdownIt, {
             env.meta.script.push(runtime);
 
             if (bundle) {
+                let join;
+                try {
+                    join = require('node:path').join;
+                } catch(_e) {}
+
                 const file = join(PACKAGE, 'runtime');
                 if (!env.bundled.has(file)) {
                     env.bundled.add(file);
