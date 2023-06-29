@@ -1,5 +1,3 @@
-import { join, dirname } from 'node:path';
-import { mkdirSync, copyFileSync } from 'node:fs';
 import MarkdownIt from 'markdown-it';
 import type { MarkdownItPluginCb, MarkdownItPluginOpts } from '@doc-tools/transform/lib/plugins/typings';
 import type ParserCore from 'markdown-it/lib/parser_core';
@@ -31,8 +29,19 @@ function hidden<B extends Record<string | symbol, unknown>, F extends string | s
 }
 
 function copy(from: string, to: string) {
+    const { mkdirSync, copyFileSync } = dynrequire('node:fs');
+    const { dirname } = dynrequire('node:path');
+
     mkdirSync(dirname(to), { recursive: true });
     copyFileSync(from, to);
+}
+
+/*
+* Runtime require hidden for builders.
+* Used for nodejs api
+*/
+function dynrequire(module: string) {
+    return eval(`require('${ module }')`);
 }
 
 const registerTransforms = (md: MarkdownIt, {
@@ -59,6 +68,7 @@ const registerTransforms = (md: MarkdownIt, {
             env.meta.script.push(runtime);
 
             if (bundle) {
+                const { join } = dynrequire('node:path');
                 const file = join(PACKAGE, 'runtime');
                 if (!env.bundled.has(file)) {
                     env.bundled.add(file);
