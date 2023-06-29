@@ -29,16 +29,19 @@ function hidden<B extends Record<string | symbol, unknown>, F extends string | s
 }
 
 function copy(from: string, to: string) {
-    let mkdirSync, copyFileSync, dirname
-    try {
-        const fs = require('node:fs')
-        mkdirSync = fs.mkdirSync;
-        copyFileSync = fs.copyFileSync
-        dirname = require('node:path').dirname;
-    } catch(_e) {}
+    const { mkdirSync, copyFileSync } = dynrequire('node:fs');
+    const { dirname } = dynrequire('node:path');
 
     mkdirSync(dirname(to), { recursive: true });
     copyFileSync(from, to);
+}
+
+/*
+* Runtime require hidden for builders.
+* Used for nodejs api
+*/
+function dynrequire(module: string) {
+    return eval(`require('${ module }')`);
 }
 
 const registerTransforms = (md: MarkdownIt, {
@@ -65,11 +68,7 @@ const registerTransforms = (md: MarkdownIt, {
             env.meta.script.push(runtime);
 
             if (bundle) {
-                let join;
-                try {
-                    join = require('node:path').join;
-                } catch(_e) {}
-
+                const { join } = dynrequire('node:path');
                 const file = join(PACKAGE, 'runtime');
                 if (!env.bundled.has(file)) {
                     env.bundled.add(file);
