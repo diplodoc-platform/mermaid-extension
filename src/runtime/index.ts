@@ -56,6 +56,10 @@ async function next(): Promise<void> {
                     ...config
                 });
             },
+            render: mermaid.render,
+            parseError: mermaid.parseError,
+            parse: mermaid.parse,
+            setParseErrorHandler: mermaid.setParseErrorHandler
         });
 
         return next();
