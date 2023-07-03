@@ -22,7 +22,7 @@
     "build:hooks": "./esbuild/hooks.sh",
     "build:runtime": "./esbuild/runtime.sh",
     "build:declarations": "tsc --emitDeclarationOnly --outDir .",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "jest"
   },
   "keywords": [
