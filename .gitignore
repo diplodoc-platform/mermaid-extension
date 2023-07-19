@@ -1,8 +1,9 @@
 node_modules
 /runtime
 /plugin
-/hooks
+/react
 
-index.d.ts
+/index.d.ts
+/types.d.ts
 example/package-lock.json
 example/build
