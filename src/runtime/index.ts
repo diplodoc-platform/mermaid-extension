@@ -1,5 +1,8 @@
+import type { ExposedAPI, InitConfig } from '../types';
+import type { MermaidConfig } from 'mermaid';
 import mermaid from 'mermaid';
 import dedent from 'ts-dedent';
+import { bindZoomOptions, zoomBehavior } from './zoom';
 
 mermaid.initialize({
     startOnLoad: false,
@@ -33,9 +36,10 @@ async function next(): Promise<void> {
     if (callback) {
         await callback({
             run: async ({ querySelector = '.mermaid', nodes } = {}) => {
-                const nodesList = nodes || document.querySelectorAll(querySelector);
+                const nodesList: Element[] = Array.from(nodes || document.querySelectorAll(querySelector));
+                const { zoom = false } = mermaid.mermaidAPI.getConfig() as InitConfig;
 
-                for (const element of Array.from(nodesList)) {
+                for (const element of nodesList) {
                     const id = `mermaid-${ Date.now() }`;
                     const content = element.getAttribute('data-content') || '';
                     const text = dedent(decodeURIComponent(content))
@@ -48,19 +52,28 @@ async function next(): Promise<void> {
                     if (bindFunctions) {
                         bindFunctions(element);
                     }
+
+                    bindZoomOptions(element as HTMLElement, zoom);
                 }
             },
             initialize: (config) => {
                 mermaid.initialize({
                     startOnLoad: false,
-                    ...config
+                    ...config as MermaidConfig
                 });
+
+                const { zoom } = mermaid.mermaidAPI.getConfig() as InitConfig;
+
+                document.removeEventListener('click', zoomBehavior);
+                if (zoom) {
+                    document.addEventListener('click', zoomBehavior);
+                }
             },
             render: mermaid.render,
             parseError: mermaid.parseError,
             parse: mermaid.parse,
             setParseErrorHandler: mermaid.setParseErrorHandler
-        });
+        } as ExposedAPI);
 
         return next();
     }
