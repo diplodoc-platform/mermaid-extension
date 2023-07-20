@@ -27,7 +27,7 @@
   "files": [
     "plugin",
     "runtime",
-    "hooks"
+    "react"
   ],
   "peerDependencies": {
     "react": "^16.8.0  || ^17.0.0 || ^18.0.0"
