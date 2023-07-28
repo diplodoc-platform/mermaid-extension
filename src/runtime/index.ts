@@ -64,9 +64,22 @@ async function next(): Promise<void> {
 
                 const { zoom } = mermaid.mermaidAPI.getConfig() as InitConfig;
 
+                let onUnmount = [() => {
+                    document.removeEventListener('click', zoomBehavior)
+                }]
+
                 document.removeEventListener('click', zoomBehavior);
                 if (zoom) {
-                    document.addEventListener('click', zoomBehavior);
+                    document.addEventListener('click', (e) => {
+                        const cb = zoomBehavior(e)
+                        if(cb){
+                            onUnmount.push(cb)
+                        }
+                    });
+                }
+
+                return () => {
+                    onUnmount.map(cb => cb())
                 }
             },
             render: mermaid.render,
