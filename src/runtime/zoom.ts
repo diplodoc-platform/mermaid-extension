@@ -124,6 +124,11 @@ export function zoomBehavior(event: Event) {
     };
 
     document.addEventListener('mousedown', onOuterClick, true);
+
+    return () => {
+        disableZoom()
+        document.removeEventListener('mousedown', onOuterClick, true);
+    }
 }
 
 function getZoomOptions(element: HTMLElement): ZoomOptions {

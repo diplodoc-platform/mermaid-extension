@@ -1,5 +1,5 @@
 import type { InitConfig, RunOptions, ZoomOptions } from '../types';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 
 export type RuntimeOptions = {
     onError?: (error: any) => void
@@ -31,24 +31,25 @@ function omit<O extends Record<string, any>, P extends string, R extends {
 
 export function MermaidRuntime(props: InitConfig & RunOptions & RuntimeOptions) {
     const renderMermaid = useMermaid();
-    const config = omit(props, [ 'querySelector', 'nodes', 'onError' ]);
-    const options = pick(props, [ 'querySelector', 'nodes' ]);
+    const config = omit(props, ['querySelector', 'nodes', 'onError']);
+    const options = pick(props, ['querySelector', 'nodes']);
 
     useEffect(() => {
-        renderMermaid(config, options).catch(props.onError || (() => {}));
+        renderMermaid(config, options).catch(props.onError || (() => { }));
     });
 
     return null;
 }
 
 export function useMermaid() {
-    const [ mermaid, setMermaid ] = useState<Parameters<Callback>[0] | null>(null);
+    const onUnmountRef = useRef<any>()
+    const [mermaid, setMermaid] = useState<Parameters<Callback>[0] | null>(null);
     const render = useCallback(async (config: InitConfig, options?: RunOptions) => {
         if (mermaid) {
-            mermaid.initialize(config);
-            return mermaid.run(options);
+            onUnmountRef.current = mermaid.initialize(config);
+            mermaid.run(options);
         }
-    }, [ mermaid ]);
+    }, [mermaid]);
 
     useEffect(() => {
         (window.mermaidJsonp = window.mermaidJsonp || []).push(setMermaid);
@@ -58,6 +59,8 @@ export function useMermaid() {
             if (index > -1) {
                 window.mermaidJsonp.splice(index, 1);
             }
+
+            onUnmountRef.current?.()
         };
     }, []);
 
