@@ -40,7 +40,7 @@
     }
   },
   "devDependencies": {
-    "@diplodoc/eslint-config": "^1.0.13",
+    "@diplodoc/eslint-config": "^1.0.14",
     "@diplodoc/prettier-config": "^1.0.0",
     "@diplodoc/tsconfig": "^1.0.2",
     "@doc-tools/transform": "^2.16.4",

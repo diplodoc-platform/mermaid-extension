@@ -2,3 +2,5 @@ node_modules
 /hooks
 /plugin
 /runtime
+/react
+/types.d.ts
