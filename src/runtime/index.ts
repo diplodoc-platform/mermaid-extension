@@ -1,18 +1,19 @@
-import type { ExposedAPI, InitConfig } from '../types';
-import type { MermaidConfig } from 'mermaid';
+import type {ExposedAPI, InitConfig} from '../types';
+import type {MermaidConfig} from 'mermaid';
+// eslint-disable-next-line no-duplicate-imports
 import mermaid from 'mermaid';
 import dedent from 'ts-dedent';
-import { bindZoomOptions, zoomBehavior } from './zoom';
+import {bindZoomOptions, zoomBehavior} from './zoom';
 
 mermaid.initialize({
     startOnLoad: false,
-    theme: 'forest'
+    theme: 'forest',
 });
 
-const jsonp = window.mermaidJsonp = window.mermaidJsonp || [];
+const jsonp = (window.mermaidJsonp = window.mermaidJsonp || []);
 const queue = jsonp.splice(0, jsonp.length);
 
-jsonp.push = function(...args) {
+jsonp.push = function (...args) {
     args.forEach((callback) => {
         queue.push(callback);
         unqueue();
@@ -35,18 +36,20 @@ async function next(): Promise<void> {
     const callback = queue.shift();
     if (callback) {
         await callback({
-            run: async ({ querySelector = '.mermaid', nodes } = {}) => {
-                const nodesList: Element[] = Array.from(nodes || document.querySelectorAll(querySelector));
-                const { zoom = false } = mermaid.mermaidAPI.getConfig() as InitConfig;
+            run: async ({querySelector = '.mermaid', nodes} = {}) => {
+                const nodesList: Element[] = Array.from(
+                    nodes || document.querySelectorAll(querySelector),
+                );
+                const {zoom = false} = mermaid.mermaidAPI.getConfig() as InitConfig;
 
                 for (const element of nodesList) {
-                    const id = `mermaid-${ Date.now() }`;
+                    const id = `mermaid-${Date.now()}`;
                     const content = element.getAttribute('data-content') || '';
                     const text = dedent(decodeURIComponent(content))
                         .trim()
                         .replace(/<br\s*\/?>/gi, '<br/>');
 
-                    const { svg, bindFunctions } = await mermaid.render(id, text, element);
+                    const {svg, bindFunctions} = await mermaid.render(id, text, element);
                     element.innerHTML = svg;
 
                     if (bindFunctions) {
@@ -59,10 +62,10 @@ async function next(): Promise<void> {
             initialize: (config) => {
                 mermaid.initialize({
                     startOnLoad: false,
-                    ...config as MermaidConfig
+                    ...(config as MermaidConfig),
                 });
 
-                const { zoom } = mermaid.mermaidAPI.getConfig() as InitConfig;
+                const {zoom} = mermaid.mermaidAPI.getConfig() as InitConfig;
 
                 document.removeEventListener('click', zoomBehavior);
                 if (zoom) {
@@ -72,7 +75,7 @@ async function next(): Promise<void> {
             render: mermaid.render,
             parseError: mermaid.parseError,
             parse: mermaid.parse,
-            setParseErrorHandler: mermaid.setParseErrorHandler
+            setParseErrorHandler: mermaid.setParseErrorHandler,
         } as ExposedAPI);
 
         return next();

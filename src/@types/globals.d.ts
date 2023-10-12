@@ -1,5 +1,5 @@
-import type { Selection, ZoomBehavior, BaseType } from 'd3';
-import type { ExposedAPI } from '../types';
+import type {Selection, ZoomBehavior, BaseType} from 'd3';
+import type {ExposedAPI} from '../types';
 
 declare global {
     const PACKAGE: string;

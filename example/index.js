@@ -1,19 +1,19 @@
 import transform from '@doc-tools/transform';
 import mermaid from '@diplodoc/mermaid-extension';
-import { readFile } from 'node:fs/promises'
+import {readFile} from 'node:fs/promises';
 
 (async () => {
     const content = await readFile('./Readme.md', 'utf8');
     const {result} = await transform(content, {
         output: './build',
-        plugins: [
-            mermaid.transform()
-        ]
+        plugins: [mermaid.transform()],
     });
 
-    const scripts = result.meta.script.map((script) => {
-        return `<script src="${script}"></script>`;
-    }).join('\n');
+    const scripts = result.meta.script
+        .map((script) => {
+            return `<script src="${script}"></script>`;
+        })
+        .join('\n');
 
     const html = `
 <html>
@@ -33,7 +33,7 @@ import { readFile } from 'node:fs/promises'
         ${result.html}    
     </body>
 </html>    
-    `
+    `;
 
     console.log(html);
 })();

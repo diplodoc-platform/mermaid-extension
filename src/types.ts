@@ -1,4 +1,5 @@
 import type mermaid from 'mermaid';
+// eslint-disable-next-line no-duplicate-imports
 import type {RunOptions as MermaidRunOptions, MermaidConfig} from 'mermaid';
 
 export type RunOptions = Pick<MermaidRunOptions, 'querySelector' | 'nodes'>;
@@ -8,15 +9,15 @@ export type InitConfig = MermaidConfig & {
      * Enable diagram *zoom and explore* feature. Can be boolean or object with inner props.
      */
     zoom?: boolean | ZoomOptions;
-}
+};
 
 export type ExposedAPI = {
     run: (options?: RunOptions) => Promise<void>;
     initialize: (config: InitConfig) => ReturnType<typeof mermaid.initialize>;
     render: typeof mermaid.render;
-    parseError: typeof mermaid.parseError,
-    parse: typeof mermaid.parse,
-    setParseErrorHandler: typeof mermaid.setParseErrorHandler
+    parseError: typeof mermaid.parseError;
+    parse: typeof mermaid.parse;
+    setParseErrorHandler: typeof mermaid.setParseErrorHandler;
 };
 
 export type ZoomOptions = {
@@ -41,4 +42,4 @@ export type ZoomOptions = {
      * @default false
      */
     bindKeys: boolean;
-}
+};
