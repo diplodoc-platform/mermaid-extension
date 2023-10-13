@@ -8,7 +8,7 @@ export type InitConfig = MermaidConfig & {
     /**
      * Enable diagram *zoom and explore* feature. Can be boolean or object with inner props.
      */
-    zoom?: boolean | ZoomOptions;
+    zoom?: boolean | Partial<ZoomOptions>;
 };
 
 export type ExposedAPI = {
