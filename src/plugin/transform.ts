@@ -2,7 +2,7 @@ import MarkdownIt from 'markdown-it';
 import type {
     MarkdownItPluginCb,
     MarkdownItPluginOpts,
-} from '@doc-tools/transform/lib/plugins/typings';
+} from '@diplodoc/transform/lib/plugins/typings';
 import type ParserCore from 'markdown-it/lib/parser_core';
 import type Token from 'markdown-it/lib/token';
 
