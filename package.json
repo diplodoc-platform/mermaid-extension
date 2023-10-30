@@ -4,6 +4,10 @@
   "description": "Mermaid plugin for Diplodoc transformer and builder",
   "main": "plugin/index.js",
   "types": "plugin/index.d.ts",
+  "engines": {
+    "node": ">=18",
+    "npm": ">=9.*"
+  },
   "exports": {
     ".": "./plugin/index.js",
     "./plugin": "./plugin/index.js",
@@ -62,5 +66,11 @@
     "@gravity-ui/icons": "^2.3.0",
     "mermaid": "^10.0.2",
     "ts-dedent": "^2.2.0"
+  },
+  "overrides": {
+    "react-sortable-hoc": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    }
   }
 }
