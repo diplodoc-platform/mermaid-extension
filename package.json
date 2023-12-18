@@ -29,7 +29,7 @@
     "markdown-it"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "files": [
     "plugin",
     "runtime",

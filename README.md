@@ -1,5 +1,7 @@
 # Diplodoc Mermaid extension
 
+[![NPM version](https://img.shields.io/npm/v/@diplodoc/mermaid-extension.svg?style=flat)](https://www.npmjs.org/package/@diplodoc/mermaid-extension)
+
 This is extension for Diplodoc platform which adds support for Mermaid diagrams.
 
 Extension contains some parts:
@@ -45,14 +47,14 @@ Add mermaid runtime to your final page
             });
         </script>
     </body>
-</html>   
+</html>
 ```
 
 ## Prepared Mermaid runtime
 
 The problem with Mermaid is that it has big bundle size.
 The most expected behavior is loading it asynchronously.
-But if we want to disable Mermaid's `startOnLoad` option, then we don't know when the Mermaid will be initialized. 
+But if we want to disable Mermaid's `startOnLoad` option, then we don't know when the Mermaid will be initialized.
 
 **Prepared Mermaid runtime** designed to solve this problem.
 We disable Mermaid's `startOnLoad` option to precise control render step.
@@ -133,13 +135,13 @@ const Doc: React.FC = ({ content }) => {
         })
       ]
     })
-  
+
     // Load mermaid only if one or more diagram should be rendered
     if (result.script.includes(MERMAID_RUNTIME)) {
       // Load oversized mermaid runtime asyncronously
       import('@diplodoc/mermaid-extension/runtime')
     }
-  
+
     return <div dangerouslySetInnerHTML={{ __html: result.html }} />
 }
 
