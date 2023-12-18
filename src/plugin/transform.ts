@@ -1,4 +1,4 @@
-import MarkdownIt from 'markdown-it';
+import type MarkdownIt from 'markdown-it';
 import type {
     MarkdownItPluginCb,
     MarkdownItPluginOpts,
@@ -126,7 +126,8 @@ export function transform(options: Partial<PluginOptions> = {}) {
 
     Object.assign(plugin, {
         collect(input: string, {destRoot}: InputOptions) {
-            const md = new MarkdownIt().use((md) => {
+            const MdIt = dynrequire('markdown-it');
+            const md = new MdIt().use((md: MarkdownIt) => {
                 registerTransforms(md, {
                     classes,
                     runtime,
