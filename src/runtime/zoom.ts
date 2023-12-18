@@ -1,6 +1,6 @@
 import type {ZoomOptions} from '../types';
 import * as d3 from 'd3';
-import {attachMenu, attachKeyboard} from './zoom-control';
+import {attachKeyboard, attachMenu} from './zoom-control';
 import './zoom.scss';
 
 const DATA_MERMAID_ZOOM = 'mermaidZoom';

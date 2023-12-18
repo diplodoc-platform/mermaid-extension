@@ -1,12 +1,22 @@
 {
     "extends": ["@diplodoc/eslint-config"],
     "root": true,
-    "env": {
-        "browser": true
-    },
     "settings": {
         "react": {
             "version": "detect"
         }
+    },
+    "overrides": [
+        {
+            "files": ["src/plugin/**/*", "esbuild/**/*"],
+            "env": {
+                "node": true
+            }
+        }
+    ],
+    "rules": {
+        "no-implicit-globals": "off",
+        "callback-return": "off",
+        "consistent-return": "off"
     }
 }

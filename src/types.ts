@@ -1,6 +1,6 @@
 import type mermaid from 'mermaid';
 // eslint-disable-next-line no-duplicate-imports
-import type {RunOptions as MermaidRunOptions, MermaidConfig} from 'mermaid';
+import type {MermaidConfig, RunOptions as MermaidRunOptions} from 'mermaid';
 
 export type RunOptions = Pick<MermaidRunOptions, 'querySelector' | 'nodes'>;
 

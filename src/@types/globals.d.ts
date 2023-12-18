@@ -1,4 +1,4 @@
-import type {Selection, ZoomBehavior, BaseType} from 'd3';
+import type {BaseType, Selection as D3Selection, ZoomBehavior} from 'd3';
 import type {ExposedAPI} from '../types';
 
 declare global {
@@ -8,9 +8,9 @@ declare global {
         mermaidJsonp: Callback[];
     }
 
-    type SVGSelection = Selection<SVGSVGElement, any, BaseType, any>;
+    type SVGSelection = D3Selection<SVGSVGElement, any, BaseType, any>;
 
-    type GSelection = Selection<SVGGElement, any, any, any>;
+    type GSelection = D3Selection<SVGGElement, any, any, any>;
 
     type Zoom = ZoomBehavior<SVGSVGElement, any>;
 

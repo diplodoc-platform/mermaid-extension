@@ -1,5 +1,5 @@
 import type {InitConfig, RunOptions} from '../types';
-import {useEffect, useState, useCallback} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 export type RuntimeOptions = {
     onError?: (error: any) => void;
