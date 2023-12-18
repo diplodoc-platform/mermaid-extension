@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.2.0...v1.2.1) (2023-12-18)
+
+
+### Bug Fixes
+
+* Downgrade markdown-it peer dep ([e1699db](https://github.com/diplodoc-platform/mermaid-extension/commit/e1699dbea747d72a0b944fc87c828e21605b7a54))
+
 ## [1.2.0](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.1.1...v1.2.0) (2023-12-18)
 
 
