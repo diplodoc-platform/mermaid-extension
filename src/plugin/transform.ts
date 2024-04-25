@@ -118,7 +118,7 @@ export function transform(options: Partial<PluginOptions> = {}) {
 
         md.renderer.rules.mermaid = (tokens, idx) => {
             const token = tokens[idx];
-            const code = encodeURIComponent(token.content.trim());
+            const code = encodeURIComponent(token.content.trimStart());
 
             return `<div class="mermaid" data-content="${code}"></div>`;
         };
