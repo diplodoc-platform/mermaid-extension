@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.2.1...v1.2.2) (2024-04-25)
+
+
+### Bug Fixes
+
+* remove trim at the end of mermaid code ([#15](https://github.com/diplodoc-platform/mermaid-extension/issues/15)) ([298f2ad](https://github.com/diplodoc-platform/mermaid-extension/commit/298f2adda6446d442ac217e005231d07571ae19c))
+
 ## [1.2.1](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.2.0...v1.2.1) (2023-12-18)
 
 
