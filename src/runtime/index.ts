@@ -44,10 +44,13 @@ async function next(): Promise<void> {
 
                 for (const element of nodesList) {
                     const id = `mermaid-${Date.now()}`;
-                    const content = element.getAttribute('data-content') || '';
-                    const text = dedent(decodeURIComponent(content))
-                        .trim()
-                        .replace(/<br\s*\/?>/gi, '<br/>');
+                    const content = decodeURIComponent(element.getAttribute('data-content') || '');
+                    let dedentedContent = dedent(content);
+
+                    if (content.replace(/\n*$/, '').endsWith(' ')) {
+                        dedentedContent += ' ';
+                    }
+                    const text = dedentedContent.trimStart().replace(/<br\s*\/?>/gi, '<br/>');
 
                     const {svg, bindFunctions} = await mermaid.render(id, text, element);
                     element.innerHTML = svg;
