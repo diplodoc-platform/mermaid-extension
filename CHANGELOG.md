@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.2.2...v1.2.3) (2024-04-27)
+
+
+### Bug Fixes
+
+* preserve space at the end of diagram code when parsing ([#17](https://github.com/diplodoc-platform/mermaid-extension/issues/17)) ([648070e](https://github.com/diplodoc-platform/mermaid-extension/commit/648070e4ac757f6096f595bd564752e705d68c22))
+
 ## [1.2.2](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.2.1...v1.2.2) (2024-04-25)
 
 
