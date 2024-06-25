@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.2.3...v1.2.4) (2024-06-25)
+
+
+### Bug Fixes
+
+* **example:** fixed example build ([d1bb1cd](https://github.com/diplodoc-platform/mermaid-extension/commit/d1bb1cd56379879cb8c70ef4a9be62497e4a8a24))
+
 ## [1.2.3](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.2.2...v1.2.3) (2024-04-27)
 
 
