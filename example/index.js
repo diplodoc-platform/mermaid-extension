@@ -1,9 +1,9 @@
-import transform from '@doc-tools/transform';
+import transform from '@diplodoc/transform';
 import mermaid from '@diplodoc/mermaid-extension';
 import {readFile} from 'node:fs/promises';
 
 (async () => {
-    const content = await readFile('./Readme.md', 'utf8');
+    const content = await readFile('./README.md', 'utf8');
     const {result} = await transform(content, {
         output: './build',
         plugins: [mermaid.transform()],
@@ -23,16 +23,16 @@ import {readFile} from 'node:fs/promises';
             window.mermaidJsonp = window.mermaidJsonp || [];
             window.mermaidJsonp.push(function(mermaid) {
                 window.addEventListener('load', function() {
-                    mermaid.initialize({ theme: 'forest' });                    
+                    mermaid.initialize({ theme: 'forest' });
                     mermaid.run();
                 });
             });
         </script>
     </head>
     <body style="background: #FFF">
-        ${result.html}    
+        ${result.html}
     </body>
-</html>    
+</html>
     `;
 
     console.log(html);
