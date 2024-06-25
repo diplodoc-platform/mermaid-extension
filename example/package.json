@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "@diplodoc/mermaid-extension": "*",
-    "@doc-tools/transform": "*"
+    "@diplodoc/transform": "*"
   }
 }
