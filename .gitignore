@@ -8,3 +8,13 @@ node_modules
 example/package-lock.json
 example/build
 .idea
+
+.vscode
+.history
+.env
+.DS_Store
+/lib
+/dist
+/build
+/cache
+/coverage

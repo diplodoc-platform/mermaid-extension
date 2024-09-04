@@ -20,7 +20,11 @@
     "build:js": "./esbuild/build.js",
     "build:declarations": "tsc --emitDeclarationOnly --outDir .",
     "prepublishOnly": "npm run build",
-    "test": "exit 0"
+    "test": "exit 0",
+    "lint": "lint update && lint",
+    "lint:fix": "lint update && lint fix",
+    "pre-commit": "lint update && lint-staged",
+    "prepare": "husky"
   },
   "keywords": [
     "mermaid",
@@ -59,5 +63,8 @@
     "react": "^18.2.0",
     "ts-dedent": "^2.2.0",
     "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "@diplodoc/lint": "^1.1.3"
   }
 }
