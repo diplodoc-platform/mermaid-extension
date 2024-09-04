@@ -7,5 +7,6 @@ node_modules
 /lib
 /dist
 /build
+/example/build
 /cache
 /coverage

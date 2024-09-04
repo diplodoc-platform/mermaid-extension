@@ -2,23 +2,23 @@
   "name": "@diplodoc/mermaid-extension",
   "version": "1.2.3",
   "description": "Mermaid plugin for Diplodoc transformer and builder",
-  "main": "plugin/index.js",
-  "types": "plugin/index.d.ts",
+  "main": "build/plugin/index.js",
+  "types": "build/plugin/index.d.ts",
   "engines": {
     "node": ">=18",
     "npm": ">=9.*"
   },
   "exports": {
-    ".": "./plugin/index.js",
-    "./plugin": "./plugin/index.js",
-    "./runtime": "./runtime/index.js",
-    "./react": "./react/index.js",
-    "./hooks": "./react/index.js"
+    ".": "./build/plugin/index.js",
+    "./plugin": "./build/plugin/index.js",
+    "./runtime": "./build/runtime/index.js",
+    "./react": "./build/react/index.js",
+    "./hooks": "./build/react/index.js"
   },
   "scripts": {
     "build": "run-p build:*",
     "build:js": "./esbuild/build.js",
-    "build:declarations": "tsc --emitDeclarationOnly --outDir .",
+    "build:declarations": "tsc --emitDeclarationOnly --outDir ./build",
     "prepublishOnly": "npm run build",
     "test": "exit 0",
     "lint": "lint update && lint",
@@ -33,9 +33,7 @@
   "author": "",
   "license": "MIT",
   "files": [
-    "plugin",
-    "runtime",
-    "react"
+    "build"
   ],
   "peerDependencies": {
     "markdown-it": "^13.0.0",

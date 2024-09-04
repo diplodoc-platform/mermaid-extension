@@ -1,5 +1,7 @@
 import type {ZoomOptions} from '../types';
+
 import * as d3 from 'd3';
+
 import {attachKeyboard, attachMenu} from './zoom-control';
 import './zoom.scss';
 
@@ -9,7 +11,7 @@ function datakey(key: string) {
     return key.replace(/^(.)/, (_, $1) => $1.toUpperCase());
 }
 
-function set(dataset: DOMStringMap, key: string, value: any) {
+function set(dataset: DOMStringMap, key: string, value: unknown) {
     dataset[DATA_MERMAID_ZOOM + datakey(key)] = String(value);
 }
 
@@ -32,7 +34,7 @@ const enableZoom = (element: HTMLElement, options: ZoomOptions) => {
     const {maximumScale} = options;
     const dispose: Function[] = [];
 
-    const $svg = d3.select<SVGSVGElement, any>(svg);
+    const $svg = d3.select<SVGSVGElement, unknown>(svg);
 
     if (!svg.querySelector('g.zoom-layer')) {
         const layer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
@@ -47,8 +49,8 @@ const enableZoom = (element: HTMLElement, options: ZoomOptions) => {
     const interaction = createInteraction(svg);
 
     const zoom = d3
-        .zoom<SVGSVGElement, any>()
-        .on('zoom', (event: any) => $inner.attr('transform', event.transform))
+        .zoom<SVGSVGElement, unknown>()
+        .on('zoom', (event: ZoomEvent) => $inner.attr('transform', String(event.transform)))
         .scaleExtent([1, maximumScale]);
 
     $svg.call(zoom);
