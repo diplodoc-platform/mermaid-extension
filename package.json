@@ -50,7 +50,7 @@
     "@diplodoc/tsconfig": "^1.0.2",
     "@gravity-ui/icons": "^2.8.1",
     "@types/d3": "^7.4.0",
-    "@types/markdown-it": "^13.0.7",
+    "@types/markdown-it": "^13.0.9",
     "@types/node": "^20.3.2",
     "@types/react": "^18.0.35",
     "esbuild": "^0.19.9",
