@@ -1,10 +1,11 @@
-import type MarkdownIt from 'markdown-it';
 import type {
     MarkdownItPluginCb,
     MarkdownItPluginOpts,
 } from '@diplodoc/transform/lib/plugins/typings';
 import type ParserCore from 'markdown-it/lib/parser_core';
 import type Token from 'markdown-it/lib/token';
+
+import MarkdownIt from 'markdown-it';
 
 import {PluginOptions} from './types';
 
@@ -101,8 +102,7 @@ export function transform(options: Partial<PluginOptions> = {}) {
 
     Object.assign(plugin, {
         collect(input: string, {destRoot}: InputOptions) {
-            const MdIt = require('markdown-it');
-            const md = new MdIt().use((md: MarkdownIt) => {
+            const md = new MarkdownIt().use((md: MarkdownIt) => {
                 registerTransforms(md, {
                     classes,
                     runtime,
