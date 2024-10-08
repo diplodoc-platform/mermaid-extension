@@ -27,28 +27,12 @@ function hidden<B extends Record<string | symbol, unknown>, F extends string | s
     return box as B & {[P in F]: V};
 }
 
-function copy(from: string, to: string) {
-    const {mkdirSync, copyFileSync} = dynrequire('node:fs');
-    const {dirname} = dynrequire('node:path');
-
-    mkdirSync(dirname(to), {recursive: true});
-    copyFileSync(from, to);
-}
-
-/*
- * Runtime require hidden for builders.
- * Used for nodejs api
- */
-function dynrequire(module: string) {
-    // eslint-disable-next-line no-eval
-    return eval(`require('${module}')`);
-}
-
 const registerTransforms = (
     md: MarkdownIt,
     {
         classes,
         runtime,
+        onBundle,
         bundle,
         output,
         updateTokens,
@@ -74,14 +58,8 @@ const registerTransforms = (
             env.meta.script = env.meta.script || [];
             env.meta.script.push(runtime);
 
-            if (bundle) {
-                const {join} = dynrequire('node:path');
-                const file = join(PACKAGE, 'runtime');
-                if (!env.bundled.has(file)) {
-                    env.bundled.add(file);
-
-                    copy(require.resolve(file), join(output, runtime));
-                }
+            if (bundle && onBundle) {
+                onBundle(env, output, runtime);
             }
         }
     };
@@ -123,7 +101,7 @@ export function transform(options: Partial<PluginOptions> = {}) {
 
     Object.assign(plugin, {
         collect(input: string, {destRoot}: InputOptions) {
-            const MdIt = dynrequire('markdown-it');
+            const MdIt = require('markdown-it');
             const md = new MdIt().use((md: MarkdownIt) => {
                 registerTransforms(md, {
                     classes,
