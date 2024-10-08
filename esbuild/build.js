@@ -14,6 +14,13 @@ const common = {
     tsconfig: './tsconfig.json',
 };
 
+const commonPlugin = {
+    external: ['markdown-it', 'node:*'],
+    define: {
+        PACKAGE: JSON.stringify(require('../package.json').name),
+    },
+};
+
 esbuild.build({
     ...common,
     entryPoints: ['src/runtime/index.ts'],
@@ -35,11 +42,16 @@ esbuild.build({
 
 esbuild.build({
     ...common,
+    ...commonPlugin,
+    entryPoints: ['src/plugin/index-node.ts'],
+    outfile: 'build/plugin/index-node.js',
+    platform: 'node',
+});
+
+esbuild.build({
+    ...common,
+    ...commonPlugin,
     entryPoints: ['src/plugin/index.ts'],
     outfile: 'build/plugin/index.js',
-    platform: 'node',
-    external: ['markdown-it', 'node:*'],
-    define: {
-        PACKAGE: JSON.stringify(require('../package.json').name),
-    },
+    platform: 'neutral',
 });
