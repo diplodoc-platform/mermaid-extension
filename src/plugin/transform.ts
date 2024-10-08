@@ -6,11 +6,7 @@ import type {
 import type ParserCore from 'markdown-it/lib/parser_core';
 import type Token from 'markdown-it/lib/token';
 
-export type PluginOptions = {
-    runtime: string;
-    classes: string;
-    bundle: boolean;
-};
+import {PluginOptions} from './types';
 
 function isMermaidBlock(token: Token) {
     return token.type === 'fence' && token.info.match(/^\s*mermaid(\s*|$)/);
