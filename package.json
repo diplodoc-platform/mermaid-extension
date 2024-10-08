@@ -9,6 +9,7 @@
     "npm": ">=9.*"
   },
   "exports": {
+    "node": "./build/plugin/index-node.js",
     ".": "./build/plugin/index.js",
     "./plugin": "./build/plugin/index.js",
     "./runtime": "./build/runtime/index.js",
