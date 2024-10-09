@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.0](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.2.3...v1.3.0) (2024-10-09)
+
+
+### Features
+
+* export nodejs version ([d9d877a](https://github.com/diplodoc-platform/mermaid-extension/commit/d9d877a93fbddb668b21e242e967ee874103593f))
+
+
+### Bug Fixes
+
+* **example:** fixed example build ([d1bb1cd](https://github.com/diplodoc-platform/mermaid-extension/commit/d1bb1cd56379879cb8c70ef4a9be62497e4a8a24))
+* exports ([46d9266](https://github.com/diplodoc-platform/mermaid-extension/commit/46d9266d13cde85fbdee5d8a7992dfadc9770735))
+* plugin exports ([9b6c4fe](https://github.com/diplodoc-platform/mermaid-extension/commit/9b6c4febca7710145cafb7fa318684ca4cc408b5))
+
 ## [1.2.3](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.2.2...v1.2.3) (2024-04-27)
 
 
