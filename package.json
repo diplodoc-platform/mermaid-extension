@@ -13,7 +13,10 @@
       "node": "./build/plugin/index-node.js",
       "default": "./build/plugin/index.js"
     },
-    "./plugin": "./build/plugin/index.js",
+    "./plugin": {
+      "node": "./build/plugin/index-node.js",
+      "default": "./build/plugin/index.js"
+    },
     "./runtime": "./build/runtime/index.js",
     "./react": "./build/react/index.js",
     "./hooks": "./build/react/index.js"
