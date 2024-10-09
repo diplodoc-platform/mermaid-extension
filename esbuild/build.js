@@ -21,15 +21,28 @@ const commonPlugin = {
     },
 };
 
-esbuild.build({
-    ...common,
+const commonRuntime = {
     entryPoints: ['src/runtime/index.ts'],
-    outfile: 'build/runtime/index.js',
-    minify: true,
     loader: {
         '.svg': 'text',
     },
     plugins: [inlineScss()],
+};
+
+esbuild.build({
+    ...common,
+    ...commonRuntime,
+    outfile: 'build/runtime/index-node.js',
+    platform: 'node',
+    minify: true,
+});
+
+esbuild.build({
+    ...common,
+    ...commonRuntime,
+    external: ['@gravity-ui/icons', 'd3', 'mermaid', 'ts-dedent'],
+    outfile: 'build/runtime/index.js',
+    platform: 'neutral',
 });
 
 esbuild.build({
