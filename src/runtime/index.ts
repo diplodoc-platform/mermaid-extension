@@ -1,8 +1,6 @@
 import type {ExposedAPI, InitConfig} from '../types';
-import type {MermaidConfig} from 'mermaid';
 
-// eslint-disable-next-line no-duplicate-imports
-import mermaid from 'mermaid';
+import mermaid, {MermaidConfig} from 'mermaid';
 import dedent from 'ts-dedent';
 
 import {bindZoomOptions, zoomBehavior} from './zoom';
