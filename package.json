@@ -24,6 +24,19 @@
     "./react": "./build/react/index.js",
     "./hooks": "./build/react/index.js"
   },
+  "typesVersions": {
+    "*": {
+      "index.d.ts": [
+        "./build/plugin/index.d.ts"
+      ],
+      "plugin": [
+        "./build/plugin/index.d.ts"
+      ],
+      "runtime": [
+        "./build/runtime/index.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "build": "run-p build:*",
     "build:js": "./esbuild/build.js",
