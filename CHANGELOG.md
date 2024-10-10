@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.3.0...v1.3.1) (2024-10-10)
+
+
+### Bug Fixes
+
+* export types ([1857cf5](https://github.com/diplodoc-platform/mermaid-extension/commit/1857cf50907506de4896498febfddf18ad22f061))
+
 ## [1.3.0](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.2.3...v1.3.0) (2024-10-09)
 
 
