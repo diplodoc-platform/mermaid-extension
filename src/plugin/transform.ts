@@ -81,6 +81,7 @@ export function transform(options: Partial<PluginOptions> = {}) {
         runtime = '_assets/mermaid-extension.js',
         classes = 'yfm-mermaid',
         bundle = true,
+        onBundle,
     } = options;
 
     const plugin: MarkdownItPluginCb<{output: string}> = function (md: MarkdownIt, {output = '.'}) {
@@ -88,6 +89,7 @@ export function transform(options: Partial<PluginOptions> = {}) {
             classes,
             runtime,
             bundle,
+            onBundle,
             output,
             updateTokens: true,
         });
