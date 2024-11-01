@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.3.1...v1.3.2) (2024-11-01)
+
+
+### Bug Fixes
+
+* Fix bundling for static build ([858de62](https://github.com/diplodoc-platform/mermaid-extension/commit/858de6236dfd76942f8c440a447bd410324818ca))
+
 ## [1.3.1](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.3.0...v1.3.1) (2024-10-10)
 
 
