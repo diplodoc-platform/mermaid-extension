@@ -10,6 +10,7 @@ Extension contains some parts:
 - [React hook_and_component for smart control of Mermaid](#react-hook-for-smart-control-of-mermaid)
 
 ## Quickstart
+
 Attach plugin to transformer
 
 ```js
