@@ -5,10 +5,16 @@ import dedent from 'ts-dedent';
 
 import {bindZoomOptions, zoomBehavior} from './zoom';
 
-mermaid.initialize({
+const DEFAULT_MERMAID_CONFIG: MermaidConfig = {
     startOnLoad: false,
+    suppressErrorRendering: true,
+    // To avoid breaking changes after updating to https://github.com/mermaid-js/mermaid/releases/tag/v11.0.0
+    gitGraph: { useMaxWidth: false },
+    sankey: { useMaxWidth: false },
     theme: 'forest',
-});
+};
+
+mermaid.initialize(DEFAULT_MERMAID_CONFIG);
 
 const jsonp = (window.mermaidJsonp = window.mermaidJsonp || []);
 const queue = jsonp.splice(0, jsonp.length);
@@ -64,7 +70,7 @@ async function next(): Promise<void> {
             },
             initialize: (config) => {
                 mermaid.initialize({
-                    startOnLoad: false,
+                    ...DEFAULT_MERMAID_CONFIG,
                     ...(config as MermaidConfig),
                 });
 
