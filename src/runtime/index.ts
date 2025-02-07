@@ -7,7 +7,6 @@ import {bindZoomOptions, zoomBehavior} from './zoom';
 
 const DEFAULT_MERMAID_CONFIG: MermaidConfig = {
     startOnLoad: false,
-    suppressErrorRendering: true,
     // To avoid breaking changes after updating to https://github.com/mermaid-js/mermaid/releases/tag/v11.0.0
     gitGraph: {useMaxWidth: false},
     sankey: {useMaxWidth: false},
