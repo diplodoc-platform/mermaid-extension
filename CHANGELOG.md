@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.4](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.3.3...v1.3.4) (2025-02-14)
+
+
+### Bug Fixes
+
+* Fix release script ([8b4588d](https://github.com/diplodoc-platform/mermaid-extension/commit/8b4588d54b898716e29a274e17b83ec23f4d314c))
+* hid the mermaid syntax errors ([9375e45](https://github.com/diplodoc-platform/mermaid-extension/commit/9375e454145367dc1577be7473880acfbdb13a0d))
+
+
+### Dependency update
+
+* Update peer deps react range ([495a562](https://github.com/diplodoc-platform/mermaid-extension/commit/495a5627479c94772c9a66a13acb6fc4df7a93b2))
+
 ## [1.3.3](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.3.2...v1.3.3) (2024-12-09)
 
 
