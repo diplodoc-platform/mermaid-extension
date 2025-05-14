@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.5](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.3.4...v1.3.5) (2025-05-14)
+
+
+### Dependency update
+
+* update mermaid 11.6.0 ([9ac8571](https://github.com/diplodoc-platform/mermaid-extension/commit/9ac857121c1d67d9ca7d876054462dea9c90e159))
+
 ## [1.3.4](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.3.3...v1.3.4) (2025-02-14)
 
 
