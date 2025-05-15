@@ -40,7 +40,7 @@ esbuild.build({
 esbuild.build({
     ...common,
     ...commonRuntime,
-    external: ['@gravity-ui/icons', 'd3', 'mermaid', 'ts-dedent'],
+    external: ['d3', 'mermaid', 'ts-dedent'],
     outfile: 'build/runtime/index.js',
     platform: 'neutral',
 });
