@@ -2,6 +2,7 @@
 
 const esbuild = require('esbuild');
 const {inlineScss} = require('esbuild-inline-sass');
+const {sassPlugin} = require('esbuild-sass-plugin');
 
 const {
     compilerOptions: {target},
@@ -43,6 +44,13 @@ esbuild.build({
     external: ['d3', 'mermaid', 'ts-dedent'],
     outfile: 'build/runtime/index.js',
     platform: 'neutral',
+});
+
+esbuild.build({
+    ...common,
+    entryPoints: ['src/runtime/zoom.scss'],
+    outfile: 'build/styles/zoom.css',
+    plugins: [sassPlugin()],
 });
 
 esbuild.build({

@@ -42,4 +42,5 @@ export type ZoomOptions = {
      * @default false
      */
     bindKeys: boolean;
+    inlineStyle?: boolean;
 };
