@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.3.6...v1.4.0) (2025-07-16)
+
+
+### Features
+
+* **nonce:** add nonce attr ([8cbad54](https://github.com/diplodoc-platform/mermaid-extension/commit/8cbad54b18612c32c22c7d2716869749d6ed0ca2))
+* **nonce:** add nonce, inlineStyle ([a15904a](https://github.com/diplodoc-platform/mermaid-extension/commit/a15904a6fd4a6a879b62b33eea8ca8f1b948ea6d))
+
 ## [1.3.6](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.3.5...v1.3.6) (2025-05-15)
 
 
