@@ -3,7 +3,6 @@ import type {ZoomOptions} from '../types';
 import * as d3 from 'd3';
 
 import {attachKeyboard, attachMenu} from './zoom-control';
-import './zoom.scss';
 
 const DATA_MERMAID_ZOOM = 'mermaidZoom';
 
@@ -139,6 +138,7 @@ function getZoomOptions(element: HTMLElement): ZoomOptions {
     };
 }
 
+let styleInjected = false;
 export function bindZoomOptions(element: HTMLElement, options: Partial<ZoomOptions> | boolean) {
     const _options: ZoomOptions = Object.assign(
         {
@@ -157,6 +157,10 @@ export function bindZoomOptions(element: HTMLElement, options: Partial<ZoomOptio
     }
 
     setZoomable(element, '1');
+    if (_options.inlineStyle !== false && !styleInjected) {
+        styleInjected = true;
+        require('./zoom.scss');
+    }
 
     for (const key of Object.keys(_options)) {
         set(element.dataset, key, _options[key as keyof typeof _options]);

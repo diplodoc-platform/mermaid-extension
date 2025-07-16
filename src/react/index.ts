@@ -43,8 +43,8 @@ function omit<
 
 export function MermaidRuntime(props: InitConfig & RunOptions & RuntimeOptions) {
     const renderMermaid = useMermaid();
-    const config = omit(props as Hash, ['querySelector', 'nodes', 'onError']);
-    const options = pick(props as Hash, ['querySelector', 'nodes']);
+    const config = omit(props as Hash, ['querySelector', 'nodes', 'nonce', 'onError']);
+    const options = pick(props as Hash, ['querySelector', 'nodes', 'nonce']);
 
     useEffect(() => {
         renderMermaid(config, options as Hash).catch(props.onError || (() => {}));

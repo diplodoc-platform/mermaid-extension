@@ -2,7 +2,7 @@ import type mermaid from 'mermaid';
 // eslint-disable-next-line no-duplicate-imports
 import type {MermaidConfig, RunOptions as MermaidRunOptions} from 'mermaid';
 
-export type RunOptions = Pick<MermaidRunOptions, 'querySelector' | 'nodes'>;
+export type RunOptions = Pick<MermaidRunOptions, 'querySelector' | 'nodes'> & {nonce?: string};
 
 export type InitConfig = MermaidConfig & {
     /**
@@ -42,4 +42,5 @@ export type ZoomOptions = {
      * @default false
      */
     bindKeys: boolean;
+    inlineStyle?: boolean;
 };

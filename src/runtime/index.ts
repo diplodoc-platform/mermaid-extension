@@ -41,7 +41,7 @@ async function next(): Promise<void> {
     const callback = queue.shift();
     if (callback) {
         await callback({
-            run: async ({querySelector = '.mermaid', nodes} = {}) => {
+            run: async ({querySelector = '.mermaid', nodes, nonce} = {}) => {
                 const nodesList: Element[] = Array.from(
                     nodes || document.querySelectorAll(querySelector),
                 );
@@ -58,7 +58,11 @@ async function next(): Promise<void> {
                     const text = dedentedContent.trimStart().replace(/<br\s*\/?>/gi, '<br/>');
 
                     const {svg, bindFunctions} = await mermaid.render(id, text, element);
-                    element.innerHTML = svg;
+                    let svgWithNonce = svg;
+                    if (nonce) {
+                        svgWithNonce = svgWithNonce.replace(/<style>/g, `<style nonce="${nonce}">`);
+                    }
+                    element.innerHTML = svgWithNonce;
 
                     if (bindFunctions) {
                         bindFunctions(element);
