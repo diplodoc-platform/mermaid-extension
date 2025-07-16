@@ -138,6 +138,7 @@ function getZoomOptions(element: HTMLElement): ZoomOptions {
     };
 }
 
+let styleInjected = false;
 export function bindZoomOptions(element: HTMLElement, options: Partial<ZoomOptions> | boolean) {
     const _options: ZoomOptions = Object.assign(
         {
@@ -156,7 +157,8 @@ export function bindZoomOptions(element: HTMLElement, options: Partial<ZoomOptio
     }
 
     setZoomable(element, '1');
-    if (_options.inlineStyle !== false) {
+    if (_options.inlineStyle !== false && !styleInjected) {
+        styleInjected = true;
         require('./zoom.scss');
     }
 
