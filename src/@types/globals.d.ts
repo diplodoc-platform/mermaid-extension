@@ -1,7 +1,5 @@
-import type {BaseType, Selection as D3Selection, ZoomBehavior} from 'd3';
+import type {BaseType, Selection as D3Selection, D3ZoomEvent, ZoomBehavior} from 'd3';
 import type {ExposedAPI} from '../types';
-
-import {D3ZoomEvent} from 'd3';
 
 declare global {
     const PACKAGE: string;

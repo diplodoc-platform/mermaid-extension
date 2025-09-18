@@ -1,8 +1,9 @@
+import type {PluginOptions} from './types';
+
 import {copyFileSync, mkdirSync} from 'node:fs';
 import {dirname, join} from 'node:path';
 
 import {transform as baseTransform} from './transform';
-import {PluginOptions} from './types';
 
 function copy(from: string, to: string) {
     mkdirSync(dirname(to), {recursive: true});

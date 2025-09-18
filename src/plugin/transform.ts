@@ -1,13 +1,8 @@
-import type {
-    MarkdownItPluginCb,
-    MarkdownItPluginOpts,
-} from '@diplodoc/transform/lib/plugins/typings';
 import type ParserCore from 'markdown-it/lib/parser_core';
 import type Token from 'markdown-it/lib/token';
+import type {PluginOptions} from './types';
 
 import MarkdownIt from 'markdown-it';
-
-import {PluginOptions} from './types';
 
 function isMermaidBlock(token: Token) {
     return token.type === 'fence' && token.info.match(/^\s*mermaid(\s*|$)/);
@@ -25,7 +20,7 @@ function hidden<B extends Record<string | symbol, unknown>, F extends string | s
         });
     }
 
-    return box as B & {[P in F]: V};
+    return box as B & Record<F, V>;
 }
 
 const registerTransforms = (
@@ -72,7 +67,7 @@ const registerTransforms = (
     }
 };
 
-type InputOptions = MarkdownItPluginOpts & {
+type InputOptions = {
     destRoot: string;
 };
 
@@ -84,7 +79,7 @@ export function transform(options: Partial<PluginOptions> = {}) {
         onBundle,
     } = options;
 
-    const plugin: MarkdownItPluginCb<{output: string}> = function (md: MarkdownIt, {output = '.'}) {
+    const plugin = function (md: MarkdownIt, {output = '.'}: {output: string}) {
         registerTransforms(md, {
             classes,
             runtime,
