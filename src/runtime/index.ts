@@ -58,7 +58,16 @@ async function next(): Promise<void> {
                     }
                     const text = dedentedContent.trimStart().replace(/<br\s*\/?>/gi, '<br/>');
 
-                    const {svg, bindFunctions} = await mermaid.render(id, text, element);
+                    let svg: string, bindFunctions: ((element: Element) => void) | undefined;
+
+                    try {
+                        const result = await mermaid.render(id, text, element);
+                        svg = result.svg;
+                        bindFunctions = result.bindFunctions;
+                    } catch {
+                        return;
+                    }
+
                     let svgWithNonce = svg;
                     if (nonce) {
                         svgWithNonce = svgWithNonce.replace(/<style>/g, `<style nonce="${nonce}">`);
