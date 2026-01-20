@@ -62,7 +62,7 @@ const registerTransforms = (
 
     try {
         md.core.ruler.after('fence', 'mermaid', applyTransforms);
-    } catch (e) {
+    } catch {
         md.core.ruler.push('mermaid', applyTransforms);
     }
 };

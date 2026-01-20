@@ -13,3 +13,8 @@ node_modules
 /coverage
 
 /external
+
+.lintstagedrc.js
+.prettierrc.js
+.stylelintrc.js
+esbuild/**/*.mjs

@@ -4,7 +4,7 @@
     --mermaid-zoom-control-color: #000;
 }
 
-[data-mermaid-zoom-enabled="1"] {
+[data-mermaid-zoom-enabled='1'] {
     position: relative;
 
     & > svg {
@@ -23,7 +23,6 @@
 }
 
 .mermaid-zoom-menu {
-    position: absolute;
     position: sticky;
     top: 0;
     height: calc(var(--mermaid-zoom-control-size) * 3 + var(--mermaid-zoom-control-pad) * 4);
@@ -35,7 +34,7 @@
         top: 0;
         height: calc(var(--mermaid-zoom-control-size) * 3 + var(--mermaid-zoom-control-pad) * 4);
         width: calc(var(--mermaid-zoom-control-size) * 3 + var(--mermaid-zoom-control-pad) * 4);
-        animation: mermaid-zoom-menu-controls-fadein ease .2s;
+        animation: mermaid-zoom-menu-controls-fadein ease 0.2s;
     }
 
     &-control {
@@ -44,7 +43,7 @@
         height: var(--mermaid-zoom-control-size);
         pointer-events: all;
         cursor: pointer;
-        transition: all .2s;
+        transition: all 0.2s;
 
         &:hover {
             transform: scale(1.3);
@@ -54,39 +53,45 @@
             transform: scale(1);
         }
 
-        &[data-action="up"] {
+        &[data-action='up'] {
             right: calc(var(--mermaid-zoom-control-size) + var(--mermaid-zoom-control-pad) * 2);
-            bottom: calc(var(--mermaid-zoom-control-size) * 2 + var(--mermaid-zoom-control-pad) * 3);
+            bottom: calc(
+                var(--mermaid-zoom-control-size) * 2 + var(--mermaid-zoom-control-pad) * 3
+            );
         }
 
-        &[data-action="down"] {
+        &[data-action='down'] {
             right: calc(var(--mermaid-zoom-control-size) + var(--mermaid-zoom-control-pad) * 2);
             bottom: var(--mermaid-zoom-control-pad);
         }
 
-        &[data-action="reset"] {
+        &[data-action='reset'] {
             right: calc(var(--mermaid-zoom-control-size) + var(--mermaid-zoom-control-pad) * 2);
             bottom: calc(var(--mermaid-zoom-control-size) + var(--mermaid-zoom-control-pad) * 2);
         }
 
-        &[data-action="left"] {
+        &[data-action='left'] {
             right: calc(var(--mermaid-zoom-control-size) * 2 + var(--mermaid-zoom-control-pad) * 3);
             bottom: calc(var(--mermaid-zoom-control-size) + var(--mermaid-zoom-control-pad) * 2);
         }
 
-        &[data-action="right"] {
+        &[data-action='right'] {
             right: var(--mermaid-zoom-control-pad);
             bottom: calc(var(--mermaid-zoom-control-size) + var(--mermaid-zoom-control-pad) * 2);
         }
 
-        &[data-action="zoomout"] {
+        &[data-action='zoomout'] {
             right: calc(var(--mermaid-zoom-control-size) * 2 + var(--mermaid-zoom-control-pad) * 3);
-            bottom: calc(var(--mermaid-zoom-control-size) * 2 + var(--mermaid-zoom-control-pad) * 3);
+            bottom: calc(
+                var(--mermaid-zoom-control-size) * 2 + var(--mermaid-zoom-control-pad) * 3
+            );
         }
 
-        &[data-action="zoomin"] {
+        &[data-action='zoomin'] {
             right: var(--mermaid-zoom-control-pad);
-            bottom: calc(var(--mermaid-zoom-control-size) * 2 + var(--mermaid-zoom-control-pad) * 3);
+            bottom: calc(
+                var(--mermaid-zoom-control-size) * 2 + var(--mermaid-zoom-control-pad) * 3
+            );
         }
 
         svg {
