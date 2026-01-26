@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.1](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.4.0...v1.4.1) (2026-01-26)
+
+
+### Bug Fixes
+
+* handle mermaid unhandled exception ([4943754](https://github.com/diplodoc-platform/mermaid-extension/commit/49437543ecf552cfc8584c8e7e3da826d5e7866c))
+* update version actions, node 22 ([59defe2](https://github.com/diplodoc-platform/mermaid-extension/commit/59defe2811fb916e068342c66cff36a16a9ac57d))
+
 ## [1.4.0](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.3.6...v1.4.0) (2025-07-16)
 
 
