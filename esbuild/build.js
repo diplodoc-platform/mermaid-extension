@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const esbuild = require('esbuild');
+const esbuild = require('@diplodoc/lint/esbuild');
 const {inlineScss} = require('esbuild-inline-sass');
 const {sassPlugin} = require('esbuild-sass-plugin');
 

@@ -44,10 +44,11 @@
   },
   "scripts": {
     "build": "run-p build:*",
-    "build:js": "./esbuild/build.js",
+    "build:js": "node ./esbuild/build.js",
     "build:declarations": "tsc --emitDeclarationOnly --outDir ./build",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run typecheck && npm run lint && npm test && npm run build",
     "test": "exit 0",
+    "typecheck": "tsc --noEmit",
     "lint": "lint update && lint",
     "lint:fix": "lint update && lint fix",
     "pre-commit": "lint update && lint-staged",
