@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
-const esbuild = require('@diplodoc/lint/esbuild');
-const {inlineScss} = require('esbuild-inline-sass');
-const {sassPlugin} = require('esbuild-sass-plugin');
+const {build, sassPlugin} = require('@diplodoc/lint/esbuild');
 
 const {
     compilerOptions: {target},
@@ -13,6 +11,7 @@ const common = {
     sourcemap: true,
     target: target,
     tsconfig: './tsconfig.json',
+    plugins: [sassPlugin()],
 };
 
 const commonPlugin = {
@@ -27,10 +26,9 @@ const commonRuntime = {
     loader: {
         '.svg': 'text',
     },
-    plugins: [inlineScss()],
 };
 
-esbuild.build({
+build({
     ...common,
     ...commonRuntime,
     outfile: 'build/runtime/index-node.js',
@@ -38,7 +36,7 @@ esbuild.build({
     minify: true,
 });
 
-esbuild.build({
+build({
     ...common,
     ...commonRuntime,
     external: ['d3', 'mermaid', 'ts-dedent'],
@@ -46,14 +44,13 @@ esbuild.build({
     platform: 'neutral',
 });
 
-esbuild.build({
+build({
     ...common,
     entryPoints: ['src/runtime/zoom.scss'],
     outfile: 'build/styles/zoom.css',
-    plugins: [sassPlugin()],
 });
 
-esbuild.build({
+build({
     ...common,
     entryPoints: ['src/react/index.ts'],
     outfile: 'build/react/index.js',
@@ -61,7 +58,7 @@ esbuild.build({
     external: ['react'],
 });
 
-esbuild.build({
+build({
     ...common,
     ...commonPlugin,
     entryPoints: ['src/plugin/index-node.ts'],
@@ -69,7 +66,7 @@ esbuild.build({
     platform: 'node',
 });
 
-esbuild.build({
+build({
     ...common,
     ...commonPlugin,
     entryPoints: ['src/plugin/index.ts'],
