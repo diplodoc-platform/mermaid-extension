@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.0](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.4.2...v2.0.0) (2026-02-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update to infra 1.14.0
+
+### Bug Fixes
+
+* Update to infra 1.14.0 ([69df60c](https://github.com/diplodoc-platform/mermaid-extension/commit/69df60c9fa121565d1d9dc288c498fd714ac8569))
+* Update to infra 1.14.1 ([6da6415](https://github.com/diplodoc-platform/mermaid-extension/commit/6da64155fbff23aacb2e4441ecf21cfc1f0f8f60))
+
 ## [1.4.2](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.4.1...v1.4.2) (2026-02-09)
 
 
