@@ -45,7 +45,7 @@
   "scripts": {
     "build": "run-p build:*",
     "build:js": "node ./esbuild/build.js",
-    "build:declarations": "tsc --emitDeclarationOnly --outDir ./build",
+    "build:declarations": "tsc --project tsconfig.publish.json --emitDeclarationOnly --outDir ./build",
     "prepublishOnly": "npm run typecheck && npm run lint && npm test && npm run build",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -75,7 +75,7 @@
     }
   },
   "devDependencies": {
-    "@diplodoc/lint": "^1.14.0",
+    "@diplodoc/lint": "^1.14.1",
     "@diplodoc/tsconfig": "^1.0.2",
     "@types/d3": "^7.4.0",
     "@types/markdown-it": "^13.0.9",
