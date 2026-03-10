@@ -65,7 +65,7 @@ async function next(): Promise<void> {
                         svg = result.svg;
                         bindFunctions = result.bindFunctions;
                     } catch {
-                        return;
+                        continue;
                     }
 
                     let svgWithNonce = svg;
