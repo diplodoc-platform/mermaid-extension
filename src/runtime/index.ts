@@ -98,6 +98,7 @@ async function next(): Promise<void> {
             parseError: mermaid.parseError,
             parse: mermaid.parse,
             setParseErrorHandler: mermaid.setParseErrorHandler,
+            registerLayoutLoaders: mermaid.registerLayoutLoaders,
         } as ExposedAPI);
 
         return next();

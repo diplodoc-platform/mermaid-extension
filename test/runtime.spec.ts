@@ -5,6 +5,7 @@ import type {ExposedAPI} from '../src/types';
 import {beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 
 const mockRender = vi.fn();
+const mockRegisterLayoutLoaders = vi.fn();
 
 vi.mock('mermaid', () => ({
     default: {
@@ -13,6 +14,7 @@ vi.mock('mermaid', () => ({
             getConfig: () => ({zoom: false}),
         },
         render: mockRender,
+        registerLayoutLoaders: mockRegisterLayoutLoaders,
     },
 }));
 
@@ -42,6 +44,7 @@ describe('Mermaid extension – runtime run()', () => {
     beforeEach(() => {
         document.body.innerHTML = '';
         mockRender.mockReset();
+        mockRegisterLayoutLoaders.mockReset();
     });
 
     it('should render svg into element with valid data-content', async () => {
@@ -57,6 +60,13 @@ describe('Mermaid extension – runtime run()', () => {
         const svg = div.querySelector('svg');
         expect(svg).toBeTruthy();
         expect(svg!.children.length).toBeGreaterThan(0);
+    });
+
+    it('should expose registerLayoutLoaders that delegates to mermaid', () => {
+        const loaders = {elk: vi.fn()};
+        api.registerLayoutLoaders(loaders as any);
+
+        expect(mockRegisterLayoutLoaders).toHaveBeenCalledWith(loaders);
     });
 
     it('should continue rendering remaining elements when one fails', async () => {
