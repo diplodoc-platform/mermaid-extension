@@ -18,7 +18,10 @@ export type ExposedAPI = {
     parseError: typeof mermaid.parseError;
     parse: typeof mermaid.parse;
     setParseErrorHandler: typeof mermaid.setParseErrorHandler;
+    registerLayoutLoaders: typeof mermaid.registerLayoutLoaders;
 };
+
+export type LayoutLoaders = Parameters<typeof mermaid.registerLayoutLoaders>[0];
 
 export type ZoomOptions = {
     /**

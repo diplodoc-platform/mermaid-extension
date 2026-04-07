@@ -1,8 +1,9 @@
-import type {InitConfig, RunOptions} from '../types';
+import type {InitConfig, LayoutLoaders, RunOptions} from '../types';
 
 import {useCallback, useEffect, useState} from 'react';
 
 export type RuntimeOptions = {
+    layoutLoaders?: LayoutLoaders;
     onError?: (error: unknown) => void;
 };
 
@@ -43,11 +44,19 @@ function omit<
 
 export function MermaidRuntime(props: InitConfig & RunOptions & RuntimeOptions) {
     const renderMermaid = useMermaid();
-    const config = omit(props as Hash, ['querySelector', 'nodes', 'nonce', 'onError']);
+    const config = omit(props as Hash, [
+        'querySelector',
+        'nodes',
+        'nonce',
+        'onError',
+        'layoutLoaders',
+    ]);
     const options = pick(props as Hash, ['querySelector', 'nodes', 'nonce']);
 
     useEffect(() => {
-        renderMermaid(config, options as Hash).catch(props.onError || (() => {}));
+        renderMermaid(config, options as Hash, props.layoutLoaders).catch(
+            props.onError || (() => {}),
+        );
     });
 
     return null;
@@ -56,8 +65,11 @@ export function MermaidRuntime(props: InitConfig & RunOptions & RuntimeOptions) 
 export function useMermaid() {
     const [mermaid, setMermaid] = useState<Parameters<Callback>[0] | null>(null);
     const render = useCallback(
-        async (config: InitConfig, options?: RunOptions) => {
+        async (config: InitConfig, options?: RunOptions, layoutLoaders?: LayoutLoaders) => {
             if (mermaid) {
+                if (layoutLoaders) {
+                    mermaid.registerLayoutLoaders(layoutLoaders);
+                }
                 mermaid.initialize(config);
                 return mermaid.run(options);
             }
