@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.0.0...v2.1.0) (2026-04-08)
+
+
+### Features
+
+* added registerLayoutLoaders to ExposedAPI ([09f362b](https://github.com/diplodoc-platform/mermaid-extension/commit/09f362bb25992d706da382329a265df4375f5230))
+
 ## [2.0.0](https://github.com/diplodoc-platform/mermaid-extension/compare/v1.4.2...v2.0.0) (2026-03-10)
 
 
