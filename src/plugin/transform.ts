@@ -93,7 +93,14 @@ export function transform(options: Partial<PluginOptions> = {}) {
             const token = tokens[idx];
             const code = encodeURIComponent(token.content.trimStart());
 
-            return `<div class="mermaid" data-content="${code}"></div>`;
+            const containerClassName = 'marmaid-container';
+
+            return [
+                `<div class="${containerClassName}">`,
+                `<div class="mermaid" data-content="${code}">`,
+                '</div>',
+                '</div>',
+            ].join('');
         };
     };
 
