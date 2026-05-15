@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const {build, sassPlugin} = require('@diplodoc/lint/esbuild');
+const {build, sassPlugin} = require('@diplodoc/infra/esbuild');
 
 const {
     compilerOptions: {target},
