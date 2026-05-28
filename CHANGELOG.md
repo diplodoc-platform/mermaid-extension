@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.1.0...v2.1.1) (2026-05-28)
+
+
+### Bug Fixes
+
+* **deps:** updated node to 24 ([19d0f8c](https://github.com/diplodoc-platform/mermaid-extension/commit/19d0f8c3e149ab172c1e61567669b680ded91e14))
+
 ## [2.1.0](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.0.0...v2.1.0) (2026-04-08)
 
 
