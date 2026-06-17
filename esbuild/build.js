@@ -26,6 +26,7 @@ const commonRuntime = {
     loader: {
         '.svg': 'text',
     },
+    plugins: [sassPlugin({type: 'style'})],
 };
 
 build({
