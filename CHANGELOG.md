@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.3](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.1.2...v2.1.3) (2026-06-17)
+
+
+### Bug Fixes
+
+* fixed sass plugin ([9fcd663](https://github.com/diplodoc-platform/mermaid-extension/commit/9fcd663bcb5c6aceb3892c36bfa4ec8441c8b878))
+
 ## [2.1.2](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.1.1...v2.1.2) (2026-06-09)
 
 
