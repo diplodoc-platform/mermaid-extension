@@ -1,11 +1,15 @@
-# Diplodoc Mermaid extension
+**english** | [русский](https://github.com/diplodoc-platform/mermaid-extension/blob/master/README.ru.md)
+
+---
 
 [![NPM version](https://img.shields.io/npm/v/@diplodoc/mermaid-extension.svg?style=flat)](https://www.npmjs.org/package/@diplodoc/mermaid-extension)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=diplodoc-platform_mermaid-extension&metric=alert_status)](https://sonarcloud.io/summary/overall?id=diplodoc-platform_mermaid-extension)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=diplodoc-platform_mermaid-extension&metric=coverage)](https://sonarcloud.io/summary/overall?id=diplodoc-platform_mermaid-extension)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=diplodoc-platform_mermaid-extension&metric=sqale_rating)](https://sonarcloud.io/summary/overall?id=diplodoc-platform_mermaid-extension)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=diplodoc-platform_mermaid-extension&metric=reliability_rating)](https://sonarcloud.io/summary/overall?id=diplodoc-platform_mermaid-extension)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=diplodoc-platform_mermaid-extension&metric=security_rating)](https://sonarcloud.io/summary/overall?id=diplodoc-platform_mermaid-extension)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=diplodoc-platform_mermaid-extension&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=diplodoc-platform_mermaid-extension)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=diplodoc-platform_mermaid-extension&metric=coverage)](https://sonarcloud.io/summary/new_code?id=diplodoc-platform_mermaid-extension)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=diplodoc-platform_mermaid-extension&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=diplodoc-platform_mermaid-extension)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=diplodoc-platform_mermaid-extension&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=diplodoc-platform_mermaid-extension)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=diplodoc-platform_mermaid-extension&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=diplodoc-platform_mermaid-extension)
+
+# Diplodoc Mermaid extension
 
 This is extension for Diplodoc platform which adds support for Mermaid diagrams.
 
