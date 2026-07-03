@@ -76,7 +76,6 @@
     }
   },
   "devDependencies": {
-    "@diplodoc/tsconfig": "^1.0.2",
     "@types/d3": "^7.4.0",
     "@types/markdown-it": "^13.0.9",
     "@types/node": "^22.19.7",
