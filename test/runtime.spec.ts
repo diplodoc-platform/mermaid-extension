@@ -6,6 +6,7 @@ import {beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 
 const mockRender = vi.fn();
 const mockRegisterLayoutLoaders = vi.fn();
+const elkLayoutsMock = {__elkMock: true};
 
 vi.mock('mermaid', () => ({
     default: {
@@ -18,6 +19,10 @@ vi.mock('mermaid', () => ({
     },
 }));
 
+vi.mock('@mermaid-js/layout-elk', () => ({
+    default: elkLayoutsMock,
+}));
+
 vi.mock('../src/runtime/zoom', () => ({
     bindZoomOptions: vi.fn(),
     zoomBehavior: vi.fn(),
@@ -28,6 +33,7 @@ const content =
 
 describe('Mermaid extension – runtime run()', () => {
     let api: ExposedAPI;
+    let initialRegisterCalls: unknown[][];
 
     beforeAll(async () => {
         const apiPromise = new Promise<ExposedAPI>((resolve) => {
@@ -38,6 +44,7 @@ describe('Mermaid extension – runtime run()', () => {
             ];
         });
         await import('../src/runtime/index');
+        initialRegisterCalls = mockRegisterLayoutLoaders.mock.calls.slice();
         api = await apiPromise;
     });
 
@@ -60,6 +67,11 @@ describe('Mermaid extension – runtime run()', () => {
         const svg = div.querySelector('svg');
         expect(svg).toBeTruthy();
         expect(svg!.children.length).toBeGreaterThan(0);
+    });
+
+    it('should register elk layouts on module init', () => {
+        expect(initialRegisterCalls).toHaveLength(1);
+        expect(initialRegisterCalls[0][0]).toBe(elkLayoutsMock);
     });
 
     it('should expose registerLayoutLoaders that delegates to mermaid', () => {

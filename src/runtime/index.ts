@@ -1,6 +1,7 @@
 import type {ExposedAPI, InitConfig} from '../types';
 import type {MermaidConfig} from 'mermaid';
 
+import elkLayouts from '@mermaid-js/layout-elk';
 import mermaid from 'mermaid';
 import dedent from 'ts-dedent';
 
@@ -14,6 +15,7 @@ const DEFAULT_MERMAID_CONFIG: MermaidConfig = {
     theme: 'forest',
 };
 
+mermaid.registerLayoutLoaders(elkLayouts);
 mermaid.initialize(DEFAULT_MERMAID_CONFIG);
 
 const jsonp = (window.mermaidJsonp = window.mermaidJsonp || []);
