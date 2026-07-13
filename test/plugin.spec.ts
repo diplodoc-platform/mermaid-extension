@@ -68,8 +68,8 @@ describe('Mermaid extension – plugin', () => {
         const toks = tokens('```mermaid\ngraph TD\nA-->B\n```');
         const mermaidToken = toks.find((t) => t.type === 'mermaid');
         expect(mermaidToken).toBeDefined();
-        expect(mermaidToken!.content).toContain('graph TD');
-        expect(mermaidToken!.attrGet('class')).toContain('yfm-mermaid');
+        expect(mermaidToken?.content).toContain('graph TD');
+        expect(mermaidToken?.attrGet('class')).toContain('yfm-mermaid');
     });
 
     it('should apply custom classes to token', () => {
@@ -77,7 +77,7 @@ describe('Mermaid extension – plugin', () => {
             classes: 'custom-mermaid',
         });
         const mermaidToken = toks.find((t) => t.type === 'mermaid');
-        expect(mermaidToken!.attrGet('class')).toContain('custom-mermaid');
+        expect(mermaidToken?.attrGet('class')).toContain('custom-mermaid');
     });
 
     it('should trim start of content in data-content', () => {
@@ -86,6 +86,6 @@ describe('Mermaid extension – plugin', () => {
         expect(result).toContain('data-content="');
         const match = result.match(/data-content="([^"]+)"/);
         expect(match).toBeTruthy();
-        expect(decodeURIComponent(match![1])).toMatch(/^\s*graph TD/);
+        expect(match?.[1] ? decodeURIComponent(match[1]) : '').toMatch(/^\s*graph TD/);
     });
 });

@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 
+import type {LayoutLoaderDefinition} from 'mermaid';
 import type {ExposedAPI} from '../src/types';
 
 import {beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
@@ -37,7 +38,7 @@ describe('Mermaid extension – runtime run()', () => {
 
     beforeAll(async () => {
         const apiPromise = new Promise<ExposedAPI>((resolve) => {
-            (window as any).mermaidJsonp = [
+            window.mermaidJsonp = [
                 (a: ExposedAPI) => {
                     resolve(a);
                 },
@@ -63,10 +64,11 @@ describe('Mermaid extension – runtime run()', () => {
 
         await api.run();
 
-        const div = document.querySelector('.mermaid')!;
-        const svg = div.querySelector('svg');
+        const div = document.querySelector('.mermaid');
+        const svg = div?.querySelector('svg');
+
         expect(svg).toBeTruthy();
-        expect(svg!.children.length).toBeGreaterThan(0);
+        expect(svg?.children.length).toBeGreaterThan(0);
     });
 
     it('should register elk layouts on module init', () => {
@@ -75,8 +77,8 @@ describe('Mermaid extension – runtime run()', () => {
     });
 
     it('should expose registerLayoutLoaders that delegates to mermaid', () => {
-        const loaders = {elk: vi.fn()};
-        api.registerLayoutLoaders(loaders as any);
+        const loaders = {elk: vi.fn()} as unknown as LayoutLoaderDefinition[];
+        api.registerLayoutLoaders(loaders);
 
         expect(mockRegisterLayoutLoaders).toHaveBeenCalledWith(loaders);
     });
@@ -93,9 +95,9 @@ describe('Mermaid extension – runtime run()', () => {
 
         await api.run();
 
-        const second = document.getElementById('second')!;
-        const svg = second.querySelector('svg');
+        const second = document.getElementById('second');
+        const svg = second?.querySelector('svg');
         expect(svg).toBeTruthy();
-        expect(svg!.children.length).toBeGreaterThan(0);
+        expect(svg?.children.length).toBeGreaterThan(0);
     });
 });
