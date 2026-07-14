@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.1.3...v2.2.0) (2026-07-14)
+
+
+### Features
+
+* add support elk layout ([736d2ee](https://github.com/diplodoc-platform/mermaid-extension/commit/736d2ee54f40e01a807df069e3e3a1adae730798))
+
 ## [2.1.3](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.1.2...v2.1.3) (2026-06-17)
 
 
