@@ -76,7 +76,7 @@
     }
   },
   "devDependencies": {
-    "@diplodoc/infra": "2.2.0",
+    "@diplodoc/infra": "2.2.1",
     "@types/d3": "^7.4.0",
     "@types/markdown-it": "^13.0.9",
     "@types/node": "^22.19.7",
