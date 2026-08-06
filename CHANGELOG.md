@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.2](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.2.1...v2.2.2) (2026-08-06)
+
+
+### Bug Fixes
+
+* Upgrade typescript to 5.9.3 DOCSTOOLS-6357 ([1cae46a](https://github.com/diplodoc-platform/mermaid-extension/commit/1cae46aba50a9b2a1d7078eab10c1a84dbfd44c6))
+* Upgrade typescript to 6.0.3 DOCSTOOLS-6359 ([4227ee6](https://github.com/diplodoc-platform/mermaid-extension/commit/4227ee6109725d57d76ee4f2350afcb676f94fd9))
+
 ## [2.2.1](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.2.0...v2.2.1) (2026-07-21)
 
 
