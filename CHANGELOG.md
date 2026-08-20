@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.3](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.2.2...v2.2.3) (2026-08-20)
+
+
+### Bug Fixes
+
+* bump mermaid ([83eba76](https://github.com/diplodoc-platform/mermaid-extension/commit/83eba763b2f0296716c52af45ff481e5fe454330))
+
 ## [2.2.2](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.2.1...v2.2.2) (2026-08-06)
 
 
