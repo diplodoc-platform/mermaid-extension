@@ -1,8 +1,9 @@
-import type ParserCore from 'markdown-it/lib/parser_core';
-import type Token from 'markdown-it/lib/token';
+import type {Env, MarkdownIt as MarkdownItParser, StateCore, Token} from 'markdown-it';
 import type {PluginOptions} from './types';
 
 import MarkdownIt from 'markdown-it';
+
+type MermaidEnv = Env & {meta?: {script?: string[]}};
 
 function isMermaidBlock(token: Token) {
     return token.type === 'fence' && token.info.match(/^\s*mermaid(\s*|$)/);
@@ -24,7 +25,7 @@ function hidden<B extends Record<string | symbol, unknown>, F extends string | s
 }
 
 const registerTransforms = (
-    md: MarkdownIt,
+    md: MarkdownItParser,
     {
         classes,
         runtime,
@@ -37,8 +38,8 @@ const registerTransforms = (
         updateTokens: boolean;
     },
 ) => {
-    const applyTransforms: ParserCore.RuleCore = ({tokens, env}) => {
-        hidden(env, 'bundled', new Set<string>());
+    const applyTransforms = ({tokens, env: parserEnv}: StateCore) => {
+        const env = hidden(parserEnv as MermaidEnv, 'bundled', new Set<string>());
 
         const blocks = tokens.filter(isMermaidBlock);
 
@@ -79,7 +80,7 @@ export function transform(options: Partial<PluginOptions> = {}) {
         onBundle,
     } = options;
 
-    const plugin = function (md: MarkdownIt, {output = '.'}: {output: string}) {
+    const plugin = function (md: MarkdownItParser, {output = '.'}: {output: string}) {
         registerTransforms(md, {
             classes,
             runtime,
@@ -99,7 +100,7 @@ export function transform(options: Partial<PluginOptions> = {}) {
 
     Object.assign(plugin, {
         collect(input: string, {destRoot}: InputOptions) {
-            const md = new MarkdownIt().use((md: MarkdownIt) => {
+            const md = new MarkdownIt().use((md) => {
                 registerTransforms(md, {
                     classes,
                     runtime,
