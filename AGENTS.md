@@ -72,7 +72,7 @@ This file contains instructions for AI agents working with the `@diplodoc/mermai
 - **Testing**: Vitest
 - **Styling**: SCSS (zoom), compiled to CSS
 - **Dependencies**: `mermaid`, `d3`, `@gravity-ui/icons` (runtime/React)
-- **Peer**: `markdown-it` ^13, `react` optional
+- **Peer**: `markdown-it` ^15.0.3, `react` optional
 - **Dev**: `@diplodoc/lint`, `@diplodoc/tsconfig`, `markdown-it`, `vitest`, `@vitest/coverage-v8`
 
 ## Usage Modes

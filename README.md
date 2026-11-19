@@ -21,6 +21,8 @@ Extension contains some parts:
 
 ## Quickstart
 
+Version 3 requires Markdown-it 15.0.3 or later within major version 15.
+
 Attach plugin to transformer
 
 ```js
