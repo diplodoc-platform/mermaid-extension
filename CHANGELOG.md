@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.2.3...v3.0.0) (2026-11-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **markdown-it:** Markdown-it 15.0.3 or later in major version 15 is required.
+
+### Features
+
+* **markdown-it:** require Markdown-it 15 ([e8a49a5](https://github.com/diplodoc-platform/mermaid-extension/commit/e8a49a52f4739d79b46491971ea3795cdcf3d339))
+
 ## [2.2.3](https://github.com/diplodoc-platform/mermaid-extension/compare/v2.2.2...v2.2.3) (2026-08-20)
 
 
